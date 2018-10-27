@@ -17,7 +17,9 @@ public class Test {
 		}
 		
 		Testmodel testmodel = depot.getProxy(Testmodel.class);
-		testmodel.speak("main : 能被拦截到吗？");
+		testmodel.speak("有参数的");
+		testmodel.talk();
+		testmodel.say();
 	}
 
 }

@@ -13,7 +13,7 @@ public class TestLogger {
 
 	@Before(klass = Testmodel.class, method = "speak")
 	public boolean beforeIntercepter(String str) {
-		System.out.println("前置拦截成功！！！ : " + str);
+		System.out.println("带参前置拦截成功！！！");
 		
 		return true;
 	}
@@ -22,24 +22,39 @@ public class TestLogger {
 			method = "speak", 
 			parametersTypes = { String.class })
 	public Testmodel afterIntercepter(Object result) {
-		System.out.println("滞后拦截成功！！！");
+		System.out.println("带参滞后拦截成功！！！");
 		
 		return null;
 	}
 	
-	@Before(klass = Testmodel.class, method = "speak")
-	public boolean beforeIntercepter2(String str) {
-		System.out.println("第二次前置拦截成功！！！ : " + str);
+	@Before(klass = Testmodel.class, method = "talk")
+	public boolean beforeIntercepter2() {
+		System.out.println("无参前置拦截成功！！！");
 		
 		return true;
 	}
 	
 	@After(klass = Testmodel.class,
-			method = "speak", 
-			parametersTypes = { String.class })
+			method = "talk", 
+			parametersTypes = {})
 	public Testmodel afterIntercepter2(Object result) {
-		System.out.println("第二次滞后拦截成功！！！");
+		System.out.println("无参后置拦截成功！！！");
 		
 		return null;
+	}
+	
+	@Before(klass = Testmodel.class, method = "say")
+	public boolean beforeIntercepter3() {
+		System.out.println("无参无返回值前置拦截成功！！！");
+		
+		return true;
+	}
+	
+	@After(klass = Testmodel.class,
+			method = "say", 
+			parametersTypes = {})
+	public void afterIntercepter3(Object result) {
+		System.out.println("无参无返回值后置拦截成功！！！");
+		
 	}
 }
